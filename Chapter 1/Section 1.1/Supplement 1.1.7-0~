@@ -1,0 +1,22 @@
+#lang scheme
+(define (sqrt guess x)
+  (if (accurate-answer? guess x)
+      guess
+      (sqrt (improved-answer guess x) x)))
+
+(define (accurate-answer? guess x)
+  (<(absolute-value(-(square guess)(x)))0.001))
+
+(define (improved-answer guess x)
+  (average guess (/ x guess)))
+
+(define (absolute-value x)
+  (if (< 0 x) (* x -1) x))
+
+(define (square x)
+  (* x x))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+sqrt 2 4
